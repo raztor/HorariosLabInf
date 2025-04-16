@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: front-end
+
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
@@ -18,14 +22,12 @@ jobs:
         node-version: 18
 
     - name: Install dependencies
-      working-directory: front-end
-      run: npm ci
+      run: npm install
 
     - name: Install Expo CLI
       run: npm install -g expo-cli
 
-    - name: Export Expo Web
-      working-directory: front-end
+    - name: Export Expo Web (modern bundler)
       run: npx expo export --platform web
 
     - name: Upload web build (dist/) as artifact
