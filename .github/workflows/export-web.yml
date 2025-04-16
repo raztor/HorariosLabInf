@@ -30,7 +30,7 @@ jobs:
       run: npx expo export:web
 
     - name: Upload web build (dist/) as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: expo-web-dist
         path: dist
